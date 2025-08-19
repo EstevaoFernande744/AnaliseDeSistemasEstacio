@@ -4,10 +4,10 @@ int main(){
 
     int idade, meses;
     
-    printf("Informe quantos anos você tem: ");
-    scanf("Informe a idade: %i\n", &idade);
-    printf("Informe em que mês você faz aniversario: ");
-    scanf("Informe a idade: %i\n", &meses);
+    printf("Informe quantos anos você tem: \n");
+    scanf("%i", &idade);
+    printf("Informe em que mês você faz aniversario: \n");
+    scanf("%i", &meses);
 
     if(idade > 18){
         printf("Já pode votar!\n");
