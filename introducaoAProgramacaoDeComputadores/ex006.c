@@ -30,4 +30,6 @@ int main(){
         printf("O valor do inverso de b é maior do que a");
     }
     
+
+    return 0;
 }  

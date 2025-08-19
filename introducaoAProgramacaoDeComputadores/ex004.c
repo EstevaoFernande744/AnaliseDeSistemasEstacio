@@ -18,5 +18,5 @@ int main(){
     scanf("%s", name);
     printf("O nome informado é: %s", name);
 
-
+    return 0;
 }

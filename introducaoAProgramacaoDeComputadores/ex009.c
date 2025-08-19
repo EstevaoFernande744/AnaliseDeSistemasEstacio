@@ -37,4 +37,6 @@ int main(){
         printf("Saiu da plataforma");
         break;
     }
+    
+    return 0;
 }

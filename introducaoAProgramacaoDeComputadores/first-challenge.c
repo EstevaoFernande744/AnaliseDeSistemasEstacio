@@ -75,4 +75,5 @@ int main(){
     printf("Número de Pontos Turístico: %i\n", beutPoints2);
 
 
+    return 0;
 }

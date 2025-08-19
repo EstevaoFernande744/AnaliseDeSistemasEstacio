@@ -53,4 +53,6 @@ int main(){
         printf("Opção de dia invalido!");
     }
     */
+
+    return 0;
 }
