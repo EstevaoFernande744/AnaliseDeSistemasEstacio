@@ -2,25 +2,26 @@
 #include <stdlib.h>
 #include <time.h>
 
-int main(){
+int main(void){
     
     int opcao, numeroSecreto, palpite;
 
-    printf("Menu Principal\n");
-    printf("1. Iniciar Jogo\n");
-    printf("2. Ver Regras\n");
-    printf("3. Sair\n");
-    printf("Escolha uma opção: ");
-    scanf("%d", &opcao);
+    do {
+
+        printf("Menu Principal\n");
+        printf("1. Iniciar Jogo\n");
+        printf("2. Ver Regras\n");
+        printf("3. Sair\n");
+        printf("Escolha uma opção: ");
+        scanf("%d", &opcao);
 
         /*função srand que vai iniciar o gerador de números aleatorios 
         time(0) vai pegar o horario de inicialização */
 
-    while (opcao != 3){
-
         switch (opcao){
-        case 1:
+        case 1:{ 
 
+            srand(time(0));
             numeroSecreto = rand() % 10;
             printf("Digite um número de 0 a 9: \n");
             scanf("%d", &palpite);
@@ -32,6 +33,7 @@ int main(){
             printf("Você acertou!\n");
             printf("número secreto era %d\n", numeroSecreto);
             break;
+        }
 
         case 2: {
             printf("Informe qual regra você deseja saber: \n");
@@ -66,6 +68,8 @@ int main(){
             break;
         
         }
-    }
+        
+    } while (opcao !=3);
+    
     return 0;
 }
