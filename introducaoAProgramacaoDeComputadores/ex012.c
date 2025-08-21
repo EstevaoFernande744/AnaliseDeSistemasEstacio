@@ -5,8 +5,7 @@
 int main(void){
 
     int playerS, computerS, option;
-    
-    
+        
         do{
         printf("Game Menu - JonKenPo:\n");
         printf("1. Start Game;\n");
@@ -14,13 +13,17 @@ int main(void){
         printf("3. Exit Game;\n");
         printf("Press the number selected: ");
 
+        scanf("%d", &option);
+        
         switch (option){
         case 1:
-            
-            scanf("%d", &playerS);
 
-            srand(time(0));
-            computerS = rand() % (3 + 1) == 0;
+            printf("1. Rock\n");
+            printf("2. Paper\n");
+            printf("3. Scissors\n");
+            printf("Select your option: \n");
+
+            scanf("%d", &playerS);
             switch (playerS){
             case 1:
                 printf("Player Select: Rock - ");
@@ -36,9 +39,12 @@ int main(void){
                 break;
             }
 
+            srand(time(0));
+            computerS = (rand() % 3) + 1;
+            //printf("The computer select %d\n", computerS);
             switch (computerS){
             case 1:
-                printf("Computer Select: Rock -\n");
+                printf("Computer Select: Rock\n");
                 break;
             case 2:
                 printf("Computer Select: Paper\n");
@@ -47,7 +53,6 @@ int main(void){
                 printf("Computer Select: Scissors\n");
                 break;
             }
-
 
             if (playerS == computerS){
                 printf("Draw! try again!\n");
@@ -75,9 +80,9 @@ int main(void){
             break;
         
         default:
+            printf("You're leaving to the game. See you later!\n");
             break;
         }
-        
         
     } while (option != 3);
     
