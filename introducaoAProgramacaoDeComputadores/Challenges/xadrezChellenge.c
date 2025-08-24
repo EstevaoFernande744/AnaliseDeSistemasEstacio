@@ -1,21 +1,23 @@
 #include <stdio.h>
 
-void moveTower(squares, direction){
-    int direction, i;
+void moveTower(int squares, int direction){
+    int  i, option;
 
+
+    
         switch (direction){
         case 1:
-            for(int i = 0;i < squares;i++){
+            for(int i = 1;i <= squares;i++){
                 printf("%d Movimento(s) para %8s", i );
             }
             break;
-        case 2:
-            for(int i = 0;i < squares;i++){
+        case 2: 
+            for(int i = 1;i <= squares;i++){
                 printf("%d Movimento(s) para %8s", i );
             }
             break;
         case 3:
-            for(int i = 0;i < squares;i++){
+            for(int i = 1;i <= squares;i++){
                 printf("%d Movimento(s) para %8s", i );
             }
             break;
@@ -27,7 +29,6 @@ void moveTower(squares, direction){
             printf("%d Movimento(s) para %8s", i );
         }
         
-    
 }
 
 void moveBishop(casas){
@@ -87,10 +88,60 @@ void moveHorse(config){
 
 int main(){
     int option;
-
+    int direction;
+    int squares;
 
     do{
+    printf("Menu to the Pieces Move: \n");
+    printf("1. Move the Tower;\n");
+    printf("2. Move the Bishop;\n");
+    printf("3. Move the Queen;\n");
+    printf("4. Move the Horse;\n");
+    printf("Select one option: ");
     scanf("%d", &option);
+
+    switch (option){
+    case 1:
+        printf("Informe a direção desejada para mover a torre sendo: \n");
+        printf("1. Para Esquerda;\n");
+        printf("2. Para Cima;\n");
+        printf("3. Para Direita;\n");
+        printf("4. Para Baixo;\n");
+        printf("Informe a direção desejada: ");
+        scanf("%d", &direction);
+        printf("\nInforme o número de casas desejadas: ");
+        scanf("%d", &squares);
+
+        moveTower(squares, direction);
+
+        break;
+
+    case 2:
+
+        moveBishop();
+
+        break;
+
+    case 3:
+
+        moveQueen();
+
+        break;
+    
+    case 4:
+        
+        moveHorse();
+
+        break;
+
+    default:
+
+    
+        
+        break;
+    }
+
+    
         
     }while (option != 10);
     
