@@ -1,7 +1,13 @@
 #include <stdio.h>
 
-void selecionarPecas(int tipo){ 
-
+void selecionarPecas(int option, int squares, int direction, char edge[5], int edgeDirection){ 
+    switch (option){
+        case 1: moveHorse(option); break;
+        case 2: moveBishop(squares, direction, edge[5], edgeDirection); break;
+        case 3: moveTower(squares, direction, edge[5], edgeDirection); break;
+        case 4: moveQueen(squares, direction); break;
+        default: printf("Peça selecionada invalida!"); break;
+    }
 }
 
 void indentificarBordas(int edgeDirection){
@@ -71,15 +77,25 @@ void moveBishop(int squares, int direction, char edge[5], int edgeDirection){
     
 }
 
-void moveTower(int squares, int direction){
-
+void moveTower(int squares, int direction, char edge[5],  int edgeDirection){
+        if(strcmp(edge, "nao") == 0 || strcmp(edge, "n")== 0 || strcmp(edge, "no") == 0){
+            switch (direction){
+                case 1: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Esquerda;\n", i);} break;
+                case 2: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Cima;\n", i);} break;
+                case 3: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Direita;\n", i);} break;
+                case 4: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Baixo;\n", i);} break;
+                default: printf("Opção selecionada Invalida!\n"); break;}
+        } else if (strcmp(edge, "sim") == 0 || strcmp(edge, "s") == 0 || strcmp(edge, "yes") == 0){
+            indentificarBordas(edgeDirection);
+        }
+        
 }
 
 void moveQueen(int squares, int direction){
 
 }
 
-int main(int option){
+int main(int option, int squares, int direction, char edge[5], int edgeDirection){
 
     do{
     int option;
@@ -96,6 +112,9 @@ int main(int option){
         printf("╚════════════════════════════════════╝\n");
         printf("\nDigite a opção desejada: ");
         scanf("%d", &option);
+
+        selecionarPecas(option, squares, direction, edge[5], edgeDirection);
+        
     
 
 
