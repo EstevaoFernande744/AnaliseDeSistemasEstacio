@@ -295,6 +295,16 @@ int main(){
     
         case 4:
 
+            printf("\n");
+            printf("╔═════════════════════════════════════════╗\n");
+            printf("║  direção desejada para mover o Bispo:   ║\n");
+            printf("╠═════════════════════════════════════════╣\n");
+            printf("║  1 ▸ Para Diagonal Esquerda Superior;   ║\n");
+            printf("║  2 ▸ Para Diagonal Direita Superior;    ║\n");
+            printf("║  3 ▸ Para Diagonal Esquerda Inferior;   ║\n");
+            printf("║  4 ▸ Para Diagonal Direita Inferior;    ║\n");
+            printf("╚═════════════════════════════════════════╝\n");
+
             
             printf("Informe qual movimento quer fazer com o cavalo, sendo:\n");
             printf("1. L - Esquerda-Baixo;\n");
