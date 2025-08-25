@@ -10,7 +10,7 @@ void selecionarPecas(int option, int squares, int direction, char edge[5], int e
     }
 }
 
-void indentificarBordas(int edgeDirection){
+void indentificarBordas(int edgeDirection, int vetorBorda[8][8]){
 
 }
 
