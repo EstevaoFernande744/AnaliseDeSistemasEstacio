@@ -91,6 +91,7 @@ int main(void){
                         printf("╚═══════════════════════════════════════════════╝\n");
                         printf("Informe o movimento desejado");
                         scanf("%d", &direction);
+                        printf("");
                         moveKnight(direction); 
                         break;
                 case 2: 
@@ -107,6 +108,7 @@ int main(void){
                         scanf("%d", &direction);
                         printf("Select the number of squares: ");
                         scanf("%d", &squares);
+                        printf("");
                         moveBishop(direction, squares); 
                         break;
                 case 3: 
@@ -123,9 +125,10 @@ int main(void){
                         scanf("%d", &direction);
                         printf("Select the number of squares: ");
                         scanf("%d", &squares);
-                        moveRook(squares, direction); 
+                        printf("");
+                        moveRook(direction, squares); 
                         break;
-                case 4: moveQueen(direction, squares);
+                case 4: 
                         printf("\n");
                         printf("╔══════════════════════════════════════╗\n");
                         printf("║ Direção desejada para mover a Rainha ║\n");
@@ -143,7 +146,7 @@ int main(void){
                         scanf("%d", &direction);
                         printf("Número de casas: ");
                         scanf("%d", &squares);
-                        // ordem correta: (direction, squares)
+                        printf("");
                         moveQueen(direction, squares);
                         break;
                 case 5:
