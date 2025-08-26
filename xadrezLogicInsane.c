@@ -1,69 +1,62 @@
 #include <stdio.h>
+#include <string.h>
+
+const int N = 8; // tamanho do tabuleiro
+
+// ---- Protótipos (assinaturas corretas) ----
+void selecionarPecas(int option, int squares, int direction, char edge[5], int edgeDirection);
+void indentificarBordas(int edgeDirection, int matrixBorda[N][N]);
+void moveHorse(int config);
+void moveBishop(int squares, int direction, char edge, int edgeDirection);
+void moveTower(int squares, int direction, char edge, int edgeDirection);
+void moveQueen(int squares, int direction);
 
 void selecionarPecas(int option, int squares, int direction, char edge[5], int edgeDirection){ 
+    int edge[5];
+    int matrixBorda[8][8];
     switch (option){
-        case 1: moveHorse(option); break;
-        case 2: moveBishop(squares, direction, edge[5], edgeDirection); break;
-        case 3: moveTower(squares, direction, edge[5], edgeDirection); break;
+        case 1: moveHorse(direction); break;
+        case 2: moveBishop(squares, direction, edge, edgeDirection); break;
+        case 3: moveTower(squares, direction, edge, edgeDirection); break;
         case 4: moveQueen(squares, direction); break;
         default: printf("Peça selecionada invalida!"); break;
     }
 }
 
-void indentificarBordas(int edgeDirection, int vetorBorda[8][8]){
+void indentificarBordas(int edgeDirection, int matrixBorda[N][N]){
 
-}
+    for (int i=0;i<N;i++)
+        for (int j=0;j<N;j++)
+            matrixBorda[i][j] = 0;
 
-void moveHorse(int config){
-    switch (config){
-        case 1:
-            printf("Para Esquerda\n");
-            printf("Para Esquerda\n");
-            printf("Para Baixo\n");
-            break;
-        case 2:
-            printf("Para Esquerda\n");
-            printf("Para Esquerda\n");
-            printf("Para Cima\n");
-            break;
-        case 3:
-            printf("Para Cima\n");
-            printf("Para Cima\n");
-            printf("Para Esquerda\n");
-            break;
-        case 4:
-            printf("Para Cima\n");
-            printf("Para Cima\n");
-            printf("Para Direita\n");
-            break;
-        case 5:
-            printf("Para Direita\n");
-            printf("Para Direita\n");
-            printf("Para Cima\n");
-            break;
-        case 6:
-            printf("Para Direita\n");
-            printf("Para Direita\n");
-            printf("Para Baixo\n");
-            break;
-        case 7:
-            printf("Para Baixo\n");
-            printf("Para Baixo\n");
-            printf("Para Direita\n");
-            break;
-        case 8:
-            printf("Para Baixo\n");
-            printf("Para Baixo\n");
-            printf("Para Esquerda\n");
-            break;
-        default:
-            printf("Opção Invalida, lembre-se de 1 a 8");
-            break;
+    // 1=esq, 2=cima, 3=dir, 4=baixo
+    if (edgeDirection == 1) {
+        for (int i=0;i<N;i++) matrixBorda[i][0] = 1;
+    } else if (edgeDirection == 2) {
+        for (int j=0;j<N;j++) matrixBorda[0][j] = 1;
+    } else if (edgeDirection == 3) {
+        for (int i=0;i<N;i++) matrixBorda[i][N-1] = 1;
+    } else if (edgeDirection == 4) {
+        for (int j=0;j<N;j++) matrixBorda[N-1][j] = 1;
     }
 }
 
-void moveBishop(int squares, int direction, char edge[5], int edgeDirection){
+void moveHorse(int direction){
+    switch (direction){
+        case 1: printf("Para Esquerda\nPara Esquerda\nPara Baixo\n");break;
+        case 2: printf("Para Esquerda\nPara Esquerda\nPara Cima\n"); break;
+        case 3: printf("Para Cima\nPara Cima\nPara Esquerda\n"); break;
+        case 4: printf("Para Cima\nPara Cima\nPara Direita\n"); break;
+        case 5: printf("Para Direita\nPara Direita\nPara Cima\n"); break;
+        case 6: printf("Para Direita\nPara Direita\nPara Baixo\n"); break;
+        case 7: printf("Para Baixo\nPara Baixo\nPara Direita\n"); break;
+        case 8: printf("Para Baixo\nPara Baixo\nPara Esquerda\n"); break;
+        default: printf("Opção Invalida, lembre-se de 1 a 8\n"); break;
+    }
+}
 
+void moveBishop(int squares, int direction, char edge, int edgeDirection){
+    int edge[5];
     if(strcmp(edge, "nao") == 0 || strcmp(edge, "n") == 0 || strcmp(edge, "no") == 0){
         switch (direction){
             case 1: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Diagonal Esquerda Superior;\n", i);} break;
@@ -72,22 +65,25 @@ void moveBishop(int squares, int direction, char edge[5], int edgeDirection){
             case 4: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Diagonal Direita Superior;\n", i);} break;
             default: printf("Opção selecionada Invalida!\n"); break;}
     } else if (strcmp(edge, "sim") == 0 || strcmp(edge, "s") == 0 || strcmp(edge, "yes") == 0){
-            indentificarBordas(edgeDirection);
+        int matrixBorda[8][8];
+        indentificarBordas(edgeDirection, matrixBorda);
     } 
     
 }
 
-void moveTower(int squares, int direction, char edge[5],  int edgeDirection){
-        if(strcmp(edge, "nao") == 0 || strcmp(edge, "n")== 0 || strcmp(edge, "no") == 0){
-            switch (direction){
-                case 1: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Esquerda;\n", i);} break;
-                case 2: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Cima;\n", i);} break;
-                case 3: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Direita;\n", i);} break;
-                case 4: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Baixo;\n", i);} break;
-                default: printf("Opção selecionada Invalida!\n"); break;}
-        } else if (strcmp(edge, "sim") == 0 || strcmp(edge, "s") == 0 || strcmp(edge, "yes") == 0){
-            indentificarBordas(edgeDirection);
-        }
+void moveTower(int squares, int direction, char edge,  int edgeDirection){
+    int edge[5];
+    if(strcmp(edge, "nao") == 0 || strcmp(edge, "n")== 0 || strcmp(edge, "no") == 0){
+        switch (direction){
+            case 1: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Esquerda;\n", i);} break;
+            case 2: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Cima;\n", i);} break;
+            case 3: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Direita;\n", i);} break;
+            case 4: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Baixo;\n", i);} break;
+            default: printf("Opção selecionada Invalida!\n"); break;}
+    } else if (strcmp(edge, "sim") == 0 || strcmp(edge, "s") == 0 || strcmp(edge, "yes") == 0){
+        int matrixBorda[8][8];
+        indentificarBordas(edgeDirection, matrixBorda);
+    }
         
 }
 
@@ -95,10 +91,12 @@ void moveQueen(int squares, int direction){
 
 }
 
-int main(int option, int squares, int direction, char edge[5], int edgeDirection){
+int main(int option, int squares, int direction, char edge, int edgeDirection){
 
     do{
     int option;
+    char edge[5];
+    
 
         printf("\n");
         printf("╔════════════════════════════════════╗\n");
@@ -113,7 +111,8 @@ int main(int option, int squares, int direction, char edge[5], int edgeDirection
         printf("\nDigite a opção desejada: ");
         scanf("%d", &option);
 
-        selecionarPecas(option, squares, direction, edge[5], edgeDirection);
+        selecionarPecas(option, squares, direction, edge, edgeDirection);
+        
         
     
 
