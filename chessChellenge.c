@@ -20,6 +20,7 @@ void moveKnight(int direction) {
 
 void moveRook(int direction, int squares){
     switch (direction){
+        // cada um tem um loop para colocar a númeração do movimento na frente dos movimentos
         case 1: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Esquerda;\n", i);} break;
         case 2: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Cima;\n", i);} break;
         case 3: for(int i = 1;i <= squares;i++){ printf("%d Movimento(s) para Direita;\n", i);} break;
@@ -65,20 +66,22 @@ int main(void){
             printf("╔════════════════════════════════════╗\n");
             printf("║    Menu to the Pieces Move: 🎮     ║\n");
             printf("╠════════════════════════════════════╣\n");
-            printf("║  1 ▸ Move the Horse;               ║\n");
+            printf("║  1 ▸ Move the Knight;              ║\n");
             printf("║  2 ▸ Move the Bishop;              ║\n");
-            printf("║  3 ▸ Move the Tower;               ║\n");
+            printf("║  3 ▸ Move the Rook;                ║\n");
             printf("║  4 ▸ Move the Queen;               ║\n");
             printf("║  5 ▸ Leave game.                   ║\n");
             printf("╚════════════════════════════════════╝\n");
             printf("\nDigite a opção desejada: ");
             scanf("%d", &option);
 
+            // switch para variar entra as opções 
+
             switch (option){
                 case 1: 
                         printf("\n");
                         printf("╔═══════════════════════════════════════════════╗\n");
-                        printf("║  Informe o movimento quer fazer com o cavalo  ║\n");
+                        printf("║  Informe o movimento quer fazer com o Knight; ║\n");
                         printf("╠═══════════════════════════════════════════════╣\n");
                         printf("║  1 ▸ L - Esquerda-Baixo;                      ║\n");
                         printf("║  2 ▸ L - Esquerda-Cima;                       ║\n");
@@ -91,30 +94,33 @@ int main(void){
                         printf("╚═══════════════════════════════════════════════╝\n");
                         printf("Informe o movimento desejado");
                         scanf("%d", &direction);
-                        printf("");
+                        printf("\n");
                         moveKnight(direction); 
                         break;
                 case 2: 
                         printf("\n");
                         printf("╔═════════════════════════════════════════╗\n");
-                        printf("║  direção desejada para mover o Bispo:   ║\n");
+                        printf("║  direção desejada para mover o Bishop:  ║\n");
                         printf("╠═════════════════════════════════════════╣\n");
                         printf("║  1 ▸ Para Diagonal Esquerda Superior;   ║\n");
                         printf("║  2 ▸ Para Diagonal Direita Superior;    ║\n");
                         printf("║  3 ▸ Para Diagonal Esquerda Inferior;   ║\n");
                         printf("║  4 ▸ Para Diagonal Direita Inferior;    ║\n");
                         printf("╚═════════════════════════════════════════╝\n");
+                        // solicitando a entrada para colocar nos parametros da função
                         printf("Informe a direção desejada: ");
                         scanf("%d", &direction);
                         printf("Select the number of squares: ");
                         scanf("%d", &squares);
-                        printf("");
+                        // espaço entre os dados de entrada e os movimentos
+                        printf("\n");
+                        //chamando a função (parametro1, parametro2) -> tem que seguir a ordem de parametros ou pode inverter e dar problema 
                         moveBishop(direction, squares); 
                         break;
                 case 3: 
                         printf("\n");
                         printf("╔══════════════════════════════════════╗\n");
-                        printf("║ direção desejada para mover a Torre: ║\n");
+                        printf("║ direção desejada para mover a Rook:  ║\n");
                         printf("╠══════════════════════════════════════╣\n");
                         printf("║  1 ▸ Para a Esquerda;                ║\n");
                         printf("║  2 ▸ Para Cima;                      ║\n");
@@ -125,13 +131,13 @@ int main(void){
                         scanf("%d", &direction);
                         printf("Select the number of squares: ");
                         scanf("%d", &squares);
-                        printf("");
+                        printf("\n");
                         moveRook(direction, squares); 
                         break;
                 case 4: 
                         printf("\n");
                         printf("╔══════════════════════════════════════╗\n");
-                        printf("║ Direção desejada para mover a Rainha ║\n");
+                        printf("║ Direção desejada para mover a Queen: ║\n");
                         printf("╠══════════════════════════════════════╣\n");
                         printf("║  1 ▸ Esquerda                        ║\n");
                         printf("║  2 ▸ Diagonal Esquerda Superior      ║\n");
@@ -146,7 +152,7 @@ int main(void){
                         scanf("%d", &direction);
                         printf("Número de casas: ");
                         scanf("%d", &squares);
-                        printf("");
+                        printf("\n");
                         moveQueen(direction, squares);
                         break;
                 case 5:
